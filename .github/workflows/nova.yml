@@ -36,7 +36,6 @@ jobs:
          repo init -u https://github.com/YitouNiu236/aos-AVP -b nova -m v6.xml
          repo sync -j 4
          repo forall -c 'git checkout -t $REPO_REMOTE/$REPO_RREV'
-         cp -f ${{ github.workspace }}/.github/workflows/TVBoxOS.jks nova/Video/TVBoxOS.jks
     - name: build
       run: |
         cd nova/Video
