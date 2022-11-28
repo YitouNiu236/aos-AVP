@@ -40,3 +40,14 @@ jobs:
       run: |
         cd nova/Video
         ./gradlew aNR
+    - name: Prepare App
+       run: |
+        mkdir -p ${{ github.workspace }}/apk/
+        for file in `find ~ -name "*arm*.apk" -print`; do
+          cp "$file" ${{ github.workspace }}/apk/
+        done
+    - name: Upload App To Artifact
+      uses: actions/upload-artifact@v3
+      with:
+        name: xxplyaer
+        path: ${{ github.workspace }}/apk/*
